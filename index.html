@@ -4,30 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤務連絡フォーム</title>
+
+    <style>
+        /* ページ全体のスタイル */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4; /* ページ背景色 */
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 600px;    /* ページの横幅上限 */
+            margin: 40px auto;   /* 上下マージン40px, 左右はautoで中央寄せ */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 6px;  /* 角丸 */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* かすかな影 */
+        }
+
+        /* 見出し */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;  /* 文字色 */
+        }
+
+        /* ラベルと入力欄の行揃え */
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-group label {
+            width: 100px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* テキストやセレクトなどの要素 */
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            flex: 1; /* 残りの横幅いっぱいに広げる */
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        /* テキストエリアの高さを適度に */
+        .form-group textarea {
+            height: 80px;
+            resize: vertical; /* ユーザーが縦方向のサイズ変更可能 */
+        }
+
+        /* ボタン共通スタイル */
+        button {
+            padding: 10px 20px;
+            margin: 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* 送信ボタンのスタイル */
+        button[type="submit"] {
+            background: #007bff; /* 青色 */
+            color: #fff;         /* ボタン文字色 */
+        }
+
+        button[type="submit"]:hover {
+            background: #0056b3; /* ホバー時の色 */
+        }
+
+        /* シフト変更ボタンのスタイル */
+        .shift-change button {
+            background: #28A745; /* 緑色 */
+            color: #fff;         /* ボタン文字色 */
+        }
+
+        .shift-change button:hover {
+            background: #218838; /* ホバー時の濃い緑色 */
+        }
+
+        /* ボタンを左右に分けて配置するエリア */
+        .button-wrapper {
+            display: flex;
+            justify-content: space-between; /* 左右に振り分け */
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        /* シフト変更ボタンとテキストのラッパ */
+        .shift-change {
+            text-align: center;
+        }
+        .shift-change p {
+            margin-top: 8px;
+            color: gray; /* シフト変更はこちらの文字色 */
+        }
+    </style>
 </head>
 <body>
-    <h1>勤務連絡フォーム</h1>
-    <form id="chatForm">
-        <label for="employeeId">社員番号:</label>
-        <input type="text" id="employeeId" name="employeeId" required><br><br>
+    <div class="container">
+        <h1>勤務連絡フォーム</h1>
+        <form id="chatForm">
+            <div class="form-group">
+                <label for="employeeId">社員番号:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
 
-        <label for="employeeName">氏名:</label>
-        <input type="text" id="employeeName" name="employeeName" required><br><br>
+            <div class="form-group">
+                <label for="employeeName">氏名:</label>
+                <input type="text" id="employeeName" name="employeeName" required>
+            </div>
 
-        <label for="date">対象日付:</label>
-        <input type="date" id="date" name="date" required><br><br>
+            <div class="form-group">
+                <label for="date">対象日付:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
 
-        <label for="status">ステータス:</label>
-        <select id="status" name="status" required>
-            <option value="休み">休み</option>
-            <option value="遅刻">遅刻</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="status">ステータス:</label>
+                <select id="status" name="status" required>
+                    <option value="休み">休み</option>
+                    <option value="遅刻">遅刻</option>
+                </select>
+            </div>
 
-        <label for="remarks">備考:</label><br>
-        <textarea id="remarks" name="remarks" rows="4" cols="50" placeholder="理由などを記載してください"></textarea><br><br>
+            <div class="form-group">
+                <label for="remarks">備考:</label>
+                <textarea id="remarks" name="remarks" placeholder="理由などを記載してください"></textarea>
+            </div>
 
-        <button type="submit">送信</button>
-    </form>
+            <!-- ボタンを左右に分けて配置するエリア -->
+            <div class="button-wrapper">
+                <!-- 左側: 送信ボタン -->
+                <div>
+                    <button type="submit">送信</button>
+                </div>
+
+                <!-- 右側: シフト変更ボタン + テキスト -->
+                <div class="shift-change">
+                    <button type="button" onclick="location.href='https://imaudo00.github.io/sihutohennkou/'">
+                        シフト変更
+                    </button>
+                    <p>シフト変更はこちら</p>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <script>
         document.getElementById('chatForm').addEventListener('submit', async function(event) {
@@ -46,7 +177,8 @@
                 return;
             }
 
-            const webhookUrl = 'https://chat.googleapis.com/v1/spaces/AAAAhVW3TW4/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=s_xprZnV-xBW9Rjt581aqamD-NNCpTlq4F0k3DGcdg0'; // Webhook URLを設定
+            // Webhook URLを設定
+            const webhookUrl = 'https://chat.googleapis.com/v1/spaces/AAAAhVW3TW4/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=s_xprZnV-xBW9Rjt581aqamD-NNCpTlq4F0k3DGcdg0';
 
             const message = `勤務連絡\n社員番号: ${employeeId}\n氏名: ${employeeName}\n対象日付: ${date}\nステータス: ${status}\n備考: ${remarks || "なし"}`;
 
@@ -61,6 +193,7 @@
                 alert('エラーが発生しました: ' + error.message);
             }
 
+            // 送信後、フォームをリセット
             document.getElementById('chatForm').reset();
         });
     </script>
