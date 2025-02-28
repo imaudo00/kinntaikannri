@@ -161,6 +161,12 @@
     </div>
 
     <script>
+                // ページ読み込み時に対象日付を今日の日付に設定
+        window.onload = function() {
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById("date").value = today;
+        };
+        
         document.getElementById('chatForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
