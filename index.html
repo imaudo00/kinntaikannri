@@ -138,8 +138,8 @@
             </div>
 
             <div class="form-group">
-                <label for="remarks">備考:</label>
-                <textarea id="remarks" name="remarks" placeholder="理由などを記載してください"></textarea>
+                <label for="remarks">当欠理由:</label>
+                <textarea id="remarks" name="remarks" placeholder="理由を明確にしてご記載ください" required></textarea>
             </div>
 
             <!-- ボタンを左右に分けて配置するエリア -->
@@ -172,10 +172,11 @@
             const remarks = document.getElementById('remarks').value.trim();
 
             // 必須項目の検証
-            if (!employeeId || !employeeName || !date) {
-                alert('必須項目が入力されていません。社員番号、氏名、対象日付を入力してください。');
+            if (!employeeId || !employeeName || !date || !remarks) {
+                alert('必須項目が入力されていません。社員番号、氏名、対象日付、当欠理由を入力してください。');
                 return;
             }
+
 
             // Webhook URLを設定
             const webhookUrl = 'https://chat.googleapis.com/v1/spaces/AAAAhVW3TW4/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=s_xprZnV-xBW9Rjt581aqamD-NNCpTlq4F0k3DGcdg0';
